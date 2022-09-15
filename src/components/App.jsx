@@ -1,16 +1,76 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import { Component } from "react";
+
+import Section from 'components/DataCollection/Section';
+import Statistics from 'components/DataCollection/Statistics.jsx';
+import FeedbackOptions from 'components/DataCollection/FeedbackOptions.jsx';
+import Notification from 'components/DataCollection/Notification.jsx';
+
+
+
+export class App extends Component {
+    state = {
+        good: 0,
+        neutral: 0,
+        bad: 0
+    }
+  
+    onLeaveFeedback = (options) => {
+        this.setState((prevState) => {
+            const value = prevState[options];
+            return {
+                [options]: value + 1
+            }
+        })
+    }
+
+    countTotalFeedback() {
+        const { good, neutral, bad } = this.state;
+        return good + neutral + bad;
+    }
+
+    countPositiveFeedbackPercentage() {
+        const total = this.countTotalFeedback();
+        if (!total) {
+            return 0;
+        }
+        const { good, neutral } = this.state;
+        const result = ((good + neutral) / total) * 100;
+        return Number(result.toFixed(2));
+    }
+   
+
+    render() {
+        const { good, neutral, bad } = this.state;
+        const total = this.countTotalFeedback();
+        const positivePercentage = this.countPositiveFeedbackPercentage();
+        const account = this.onLeaveFeedback;
+     
+        return (
+            <div
+                style={{
+                    height: '100vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: 40,
+                    color: '#010101',
+                    flexDirection: 'column',
+                }}
+            >
+                <Section title='Please leave fidback'>
+                    <FeedbackOptions onLeaveFeedback={account} />
+                </Section>
+                <Section title='Statistic'>
+                    {!total ? <Notification message="There is no feedback" /> : <Statistics
+                        good={good}
+                        neutral={neutral}
+                        bad={bad}
+                        total={total}
+                        positivePercentage={positivePercentage}
+                    />}
+                </Section>
+            </div>
+        );
+    };
+}
+
