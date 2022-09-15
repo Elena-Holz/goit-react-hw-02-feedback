@@ -1,5 +1,5 @@
 import css from 'components/DataCollection/DataCollection.module.css';
-
+import PropTypes from 'prop-types';
 
  const Section = ({ title, children }) => {
     return (
@@ -11,3 +11,9 @@ import css from 'components/DataCollection/DataCollection.module.css';
 }
 
 export default Section;      
+
+Section.propTypes = {
+
+    title: PropTypes.string.isRequired,
+    
+}
