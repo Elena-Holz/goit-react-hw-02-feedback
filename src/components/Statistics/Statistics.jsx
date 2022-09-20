@@ -1,4 +1,4 @@
-import css from 'components/DataCollection/DataCollection.module.css';
+import css from 'components/Statistics/Statistics.module.css';
 import PropTypes from 'prop-types';
 
 export default function  Statistics({good, neutral, bad, total, positivePercentage}) {

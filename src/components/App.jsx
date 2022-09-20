@@ -1,9 +1,9 @@
 import { Component } from "react";
 
-import Section from 'components/DataCollection/Section';
-import Statistics from 'components/DataCollection/Statistics.jsx';
-import FeedbackOptions from 'components/DataCollection/FeedbackOptions.jsx';
-import Notification from 'components/DataCollection/Notification.jsx';
+import Section from 'components/Section/Section.jsx';
+import Statistics from 'components/Statistics/Statistics.jsx';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions.jsx';
+import Notification from 'components/Notification/Notification.jsx';
 
 
 

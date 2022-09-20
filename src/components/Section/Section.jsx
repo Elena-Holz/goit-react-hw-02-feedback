@@ -1,4 +1,4 @@
-import css from 'components/DataCollection/DataCollection.module.css';
+import css from 'components/Section/Section.module.css';
 import PropTypes from 'prop-types';
 
  const Section = ({ title, children }) => {
