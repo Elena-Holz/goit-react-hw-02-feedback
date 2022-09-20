@@ -6,3 +6,9 @@
     background-color: rgb(217, 217, 234);
     font-size: 20px;
 }
+
+.listStatistic {
+
+    list-style: none;
+    display: flex;
+}
